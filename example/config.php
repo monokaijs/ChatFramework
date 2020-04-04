@@ -1,0 +1,2 @@
+<?php
+$accessToken = "<ACCESS_TOKEN>";  // PLACE YOUR FANPAGE'S ACCESS TOKEN HERE

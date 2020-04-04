@@ -1,3 +1,3 @@
 <?php
-require __DIR__ . "./ChatFramework.php";
-require __DIR__ . "./MessageBuilder.php";
+require __DIR__ . "./dist/ChatFramework.php";
+require __DIR__ . "./dist/MessageBuilder.php";

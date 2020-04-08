@@ -5,7 +5,7 @@ namespace NorthStudio;
 
 
 class ChatFramework {
-    const version = "1.0.0";
+    const version = "1.0.1";
     private $accessToken = "";
     private $inputData;
     private $senderId = "";
@@ -147,6 +147,20 @@ class ChatFramework {
             "message" => $message
         ));
     }
+	
+	public function deleteOptions($options) {
+		$url = "https://graph.facebook.com/v6.0/me/messenger_profile?access_token=" . $this->accessToken;
+		$ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array(
+			"fields" => $options
+		)));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json'
+        ));
+        return curl_exec($ch);
+	}
 
     private function sendPost($url, $data) {
         $ch = curl_init($url);

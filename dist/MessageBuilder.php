@@ -86,12 +86,12 @@ class MessageBuilder {
     }
 
     public function createButton($type, $title, $payload = "", $url = "") {
-        return (object) array(
+        return (object) array_filter(array(
             "type" => $type,
             "title" => $title,
             "payload" => $payload,
             "url" => $url
-        );
+        ));
     }
 
     public function createTemplateDefaultAction($url, $isMessengerExtension = false, $webviewHeight = "TALL") {

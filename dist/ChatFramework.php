@@ -105,7 +105,7 @@ class ChatFramework {
     public function setupGreetingMessage($text) {
         // you still can use {{user_first_name}}, {{user_last_name}}, {{user_full_name}}
         $url = "https://graph.facebook.com/v6.0/me/messenger_profile?access_token=" . $this->accessToken;
-        return $this->sendMessage($url, array(
+        return $this->sendPost($url, array(
             "greeting" => [
                 array(
                     "locale" => "default",
@@ -118,10 +118,10 @@ class ChatFramework {
     public function setupPersistentMenu($buttons, $disableComposer = false) {
         if (!is_array($buttons)) $buttons = [$buttons];
         $url = "https://graph.facebook.com/v6.0/me/messenger_profile?access_token=" . $this->accessToken;
-        return $this->sendMessage($url, array(
+        return $this->sendPost($url, array(
             "persistent_menu" => [
                 array(
-                    "persistent_menu" => "default",
+					"locale" => "default",
                     "composer_input_disabled" => $disableComposer,
                     "call_to_actions" => $buttons
                 )
